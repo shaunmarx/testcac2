@@ -4,9 +4,15 @@ steps "AzurePS" {
         action_type = "Octopus.AzurePowerShell"
         worker_pool_id_or_name = "Default Worker Pool"
 
+        packages {
+            acquisition_location = "Server"
+            feed_id_or_name = "Octopus Server (built-in)"
+            package_id = "testcac1"
+        }
+
         packages "TempPackage1" {
             acquisition_location = "Server"
-            feed_id_or_name = "My Packages"
+            feed_id_or_name = "Octopus Server (built-in)"
             package_id = "TempPackage1"
 
             properties {
@@ -17,7 +23,7 @@ steps "AzurePS" {
 
         packages "TempPackage2" {
             acquisition_location = "Server"
-            feed_id_or_name = "My Packages"
+            feed_id_or_name = "Octopus Server (built-in)"
             package_id = "TempPackage2"
 
             properties {
@@ -26,19 +32,12 @@ steps "AzurePS" {
             }
         }
 
-        packages {
-            acquisition_location = "Server"
-            feed_id_or_name = "My Packages"
-            package_id = "TempPackage"
-        }
-
         properties {
             Octopus_Action_Script_ScriptSource = "Package"
-            Octopus_Action_Script_ScriptFileName = "packageMainScriptFile.ps1"
-
-            Octopus_Action_Package_PackageId = "TempPackage"
-            Octopus_Action_Package_FeedId = "My Packages"
-            Octopus_Action_Azure_AccountId = "AzureServicePrincipalAccount9d80f4c4a9ef44e7aca2b621bc285b88"
+            Octopus_Action_Script_ScriptFileName = "script.ps1"
+            Octopus_Action_Package_PackageId = "testcac1"
+            Octopus_Action_Package_FeedId = "Octopus Server (built-in)"
+            Octopus_Action_Azure_AccountId = "Test"
             Octopus_Action_Package_DownloadOnTentacle = "False"
             Octopus_Action_RunOnServer = "true"
         }
