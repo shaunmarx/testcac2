@@ -1,0 +1,46 @@
+steps "AzurePS" {
+
+    actions "AzurePS" {
+        action_type = "Octopus.AzurePowerShell"
+        worker_pool_id_or_name = "Default Worker Pool"
+
+        packages "TempPackage1" {
+            acquisition_location = "Server"
+            feed_id_or_name = "My Packages"
+            package_id = "TempPackage1"
+
+            properties {
+                Extract = "True"
+                SelectionMode = "immediate"
+            }
+        }
+
+        packages "TempPackage2" {
+            acquisition_location = "Server"
+            feed_id_or_name = "My Packages"
+            package_id = "TempPackage2"
+
+            properties {
+                Extract = "True"
+                SelectionMode = "immediate"
+            }
+        }
+
+        packages {
+            acquisition_location = "Server"
+            feed_id_or_name = "My Packages"
+            package_id = "TempPackage"
+        }
+
+        properties {
+            Octopus_Action_Script_ScriptSource = "Package"
+            Octopus_Action_Script_ScriptFileName = "packageMainScriptFile.ps1"
+
+            Octopus_Action_Package_PackageId = "TempPackage"
+            Octopus_Action_Package_FeedId = "My Packages"
+            Octopus_Action_Azure_AccountId = "AzureServicePrincipalAccount9d80f4c4a9ef44e7aca2b621bc285b88"
+            Octopus_Action_Package_DownloadOnTentacle = "False"
+            Octopus_Action_RunOnServer = "true"
+        }
+    }
+}
