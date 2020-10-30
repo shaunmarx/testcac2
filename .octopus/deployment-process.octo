@@ -1,0 +1,21 @@
+steps "Deploy Azure PS" {
+             Octopus_Action_DeployRelease_DeploymentCondition = "IfNewer"
+         }
+     }
+}
+
+steps "Email team" {
+    condition = "Always"
+
+    actions "Email team" {
+        action_type = "Octopus.Email"
+
+        properties {
+            Octopus_Action_Email_Body = "Hello from CaC"
+            Octopus_Action_Email_Subject = "Hello from CaC"
+            Octopus_Action_Email_ToTeamIds = "S__1"
+            Octopus_Action_Email_CCTeamIds = "S__1"
+            Octopus_Action_Email_BccTeamIds = "S__1"
+        }
+    }
+ }
