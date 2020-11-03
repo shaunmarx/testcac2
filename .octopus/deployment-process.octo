@@ -9,6 +9,10 @@ steps "AzurePS" {
             acquisition_location = "Server"
             feed_id_or_name = "Octopus Server (built-in)"
             package_id = "testcac1"
+
+            properties {
+                SelectionMode = "immediate"
+            }
         }
 
         packages "TempPackage1" {
@@ -42,5 +46,36 @@ steps "AzurePS" {
             Octopus_Action_Package_DownloadOnTentacle = "False"
             Octopus_Action_RunOnServer = "true"
         }
+    }
+}
+
+steps "Run a Script" {
+
+    actions "Run a Script" {
+        action_type = "Octopus.Script"
+        worker_pool_variable = ""
+
+        packages {
+            acquisition_location = "Server"
+            feed_id_or_name = "Octopus Server (built-in)"
+            package_id = "TempPackage1"
+
+            properties {
+                SelectionMode = "immediate"
+            }
+        }
+
+        properties {
+            Octopus_Action_RunOnServer = "false"
+            Octopus_Action_Script_ScriptSource = "Package"
+            Octopus_Action_Script_ScriptFileName = "script.ps1"
+            Octopus_Action_Package_PackageId = "TempPackage1"
+            Octopus_Action_Package_FeedId = "Octopus Server (built-in)"
+            Octopus_Action_Package_DownloadOnTentacle = "False"
+        }
+    }
+
+    properties {
+        Octopus_Action_TargetRoles = "Role Green Antelope"
     }
 }
