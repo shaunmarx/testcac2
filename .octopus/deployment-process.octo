@@ -2,6 +2,7 @@ steps "AzurePS" {
 
     actions "AzurePS" {
         action_type = "Octopus.AzurePowerShell"
+        channels = ["Beta"]
         worker_pool_id_or_name = "Default Worker Pool"
 
         packages {
