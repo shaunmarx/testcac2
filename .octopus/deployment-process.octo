@@ -79,3 +79,19 @@ steps "Run a Script" {
         Octopus_Action_TargetRoles = "Role Green Antelope"
     }
 }
+
+steps "Email team" {
+    condition = "Always"
+
+    actions "Email team" {
+        action_type = "Octopus.Email"
+
+        properties {
+            Octopus_Action_Email_Body = "Hello from CaC"
+            Octopus_Action_Email_Subject = "Hello from CaC"
+            Octopus_Action_Email_ToTeamIds = "Everyone"
+            Octopus_Action_Email_CCTeamIds = "Everyone"
+            Octopus_Action_Email_BccTeamIds = "Everyone"
+        }
+    }
+}
