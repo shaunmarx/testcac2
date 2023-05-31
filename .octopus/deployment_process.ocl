@@ -1,32 +1,13 @@
-step "hello-world-using-bash" {
-    name = "Hello world (using Bash)"
+step "run-a-script" {
+    name = "Run a Script"
 
     action {
         action_type = "Octopus.Script"
-        is_required = true
         properties = {
             Octopus.Action.RunOnServer = "true"
-            Octopus.Action.Script.ScriptBody = <<-EOT
-                echo 'Hello world, using Bash'
-                
-                #TODO: Experiment with steps of your own :)
-                
-                echo '[Learn more about the types of steps available in Octopus](https://oc.to/OnboardingAddStepsLearnMore)'
-                EOT
+            Octopus.Action.Script.ScriptBody = "echo 'hello world'"
             Octopus.Action.Script.ScriptSource = "Inline"
-            Octopus.Action.Script.Syntax = "Bash"
-        }
-    }
-}
-
-step "manual-intervention-required" {
-    name = "Manual Intervention Required"
-
-    action {
-        action_type = "Octopus.Manual"
-        properties = {
-            Octopus.Action.Manual.BlockConcurrentDeployments = "False"
-            Octopus.Action.Manual.Instructions = "Do whatever broo."
+            Octopus.Action.Script.Syntax = "PowerShell"
         }
     }
 }
