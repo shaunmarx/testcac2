@@ -5,7 +5,7 @@ step "run-a-script" {
         action_type = "Octopus.Script"
         properties = {
             Octopus.Action.RunOnServer = "true"
-            Octopus.Action.Script.ScriptBody = " dsfasdfasdfasdfecho .;' dsdfsdasdfasdfasdfasdf"
+            Octopus.Action.Script.ScriptBody = " dsfasdfasdfasdfecho .;' dsdfsdasdfasdfasdfasdf sdaf asdf asdf asd"
             Octopus.Action.Script.ScriptSource = "Inline"
             Octopus.Action.Script.Syntax = "Bash"
         }
