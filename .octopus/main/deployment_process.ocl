@@ -1,0 +1,86 @@
+step "run-a-script1" {
+    name = "Run a Script1"
+    properties = {
+        Octopus.Action.TargetRoles = "Fake"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.Package.DownloadOnTentacle = "False"
+            Octopus.Action.Package.FeedId = "octopus-server-built-in"
+            Octopus.Action.Package.PackageId = "MarksServiceFabricAppOfAwesomenessNetCore"
+            Octopus.Action.RunOnServer = "false"
+            Octopus.Action.Script.ScriptFileName = "script.ps1"
+            Octopus.Action.Script.ScriptSource = "Package"
+        }
+
+        packages {
+            acquisition_location = "Server"
+            feed = "octopus-server-built-in"
+            package_id = "MarksServiceFabricAppOfAwesomenessNetCore"
+            properties = {
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
+
+step "run-a-script2" {
+    name = "Run a Script2"
+    properties = {
+        Octopus.Action.TargetRoles = "Fake"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.Package.DownloadOnTentacle = "False"
+            Octopus.Action.Package.FeedId = "octopus-server-built-in"
+            Octopus.Action.Package.PackageId = "MarksServiceFabricAppOfAwesomenessNetCore"
+            Octopus.Action.RunOnServer = "false"
+            Octopus.Action.Script.ScriptFileName = "script.ps1"
+            Octopus.Action.Script.ScriptSource = "Package"
+        }
+        worker_pool_variable = ""
+
+        packages {
+            acquisition_location = "Server"
+            feed = "octopus-server-built-in"
+            package_id = "MarksServiceFabricAppOfAwesomenessNetCore"
+            properties = {
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
+
+step "run-a-script3" {
+    name = "Run a Script3"
+    properties = {
+        Octopus.Action.TargetRoles = "Fake"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.Package.DownloadOnTentacle = "False"
+            Octopus.Action.Package.FeedId = "octopus-server-built-in"
+            Octopus.Action.Package.PackageId = "MarksServiceFabricAppOfAwesomenessNetCore"
+            Octopus.Action.RunOnServer = "false"
+            Octopus.Action.Script.ScriptFileName = "script.ps1"
+            Octopus.Action.Script.ScriptParameters = "script.ps1"
+            Octopus.Action.Script.ScriptSource = "Package"
+        }
+        worker_pool_variable = ""
+
+        packages {
+            acquisition_location = "Server"
+            feed = "octopus-server-built-in"
+            package_id = "MarksServiceFabricAppOfAwesomenessNetCore"
+            properties = {
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
